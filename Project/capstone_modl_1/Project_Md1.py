@@ -15,7 +15,6 @@ pemain = [
 header_pemain = ["Nama", "Posisi", "Asal Negara","Gaji"]
 
 
-#PT 
 def tampilkan_pemain(data): 
   table = PrettyTable() 
 
@@ -188,14 +187,11 @@ def menu_read():
 
 #----------------------------------------------------------------------------------------------------------------------
 
-
 def nama_exist(nama): 
     if any(data["nama"] == nama for data in pemain):
         return True
     else:
         return False
-
-
 
 def lanjutkan(konfirmasi):
   while True:
@@ -209,36 +205,6 @@ def lanjutkan(konfirmasi):
     
     else:
         print("Pilihan Tidak Valid.")
-    
-def add_pemain():
-    while True:
-        nama =input("Masukkan Nama Pemain: ").capitalize()
-        posisi = input("Masukkan Posisi Pemain: ").capitalize()
-        asal_negara = input("Masukkan Asal Negara ").capitalize()
-        gaji = int(input("Masukkan gaji: "))
-        if nama_exist(nama):
-            print("Pemain sudah terdaftar.")
-            continue
-
-        new_data = {
-            "nama": nama,
-            "posisi": posisi,
-            "Asal Negara": asal_negara,
-            "gaji": gaji,
-        }
-
-        tampilkan_pemain([new_data])
-        validasi = input("Apakah Anda yakin ingin menambahkan data ini? (Y/N):").upper()
-
-        if(validasi == "Y"):
-          pemain.append(new_data)
-          print("Data pemain berhasil ditambahkan.")
-
-          if not lanjutkan("Apakah Anda ingin menambahkan data pemain lainnya?"):
-            break
-        else:
-          if not lanjutkan("Apakah Anda masih ingin menambahkan data pemain?"):
-            break
 
 def menu_create():
     while True:
@@ -259,9 +225,7 @@ def menu_create():
         except ValueError:
             print("Pilihan tidak valid. Silakan pilih lagi.")
 
-
 #----------------------------------------------------------------------------------------------------------------------
-
 
 def cari_pemain(nama_cari, data = pemain):
     for item in data:
@@ -270,7 +234,6 @@ def cari_pemain(nama_cari, data = pemain):
 
     print("Pemain dengan nama tersebut tidak ditemukan.")
     return None  
-
 
 def update_pemain():
     while True:
@@ -359,7 +322,6 @@ def hapus_pemain():
         if not lanjutkan("Apakah Anda ingin menghapus pemain lainnya?"):
             break
 
-
 def menu_delete():
     while True:
         try:
@@ -430,5 +392,4 @@ def main_menu():
         
         except ValueError:
             print("Pilihan tidak valid. Silakan pilih lagi.")
-    
 main_menu()
